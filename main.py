@@ -46,7 +46,7 @@ class Bird(Animal):
 
     def make_sound(self):
         """Звук, характерный для птиц."""
-        print(f"{self.name} чирикает.")
+        print(f"{self.name} поет.")
 
 class Mammal(Animal):
     def __init__(self, name, age, fur_color):
@@ -78,3 +78,49 @@ animals = [eagle, sparrow, cat, dog, snake, turtle]
 for animal in animals:
     animal.eat()
     animal.make_sound()
+
+class Zoo:
+    def __init__(self):
+        self.animals = []
+        self.staff = []
+
+    def add_animal(self, animal):
+        self.animals.append(animal)
+
+    def add_staff(self, staff_member):
+        self.staff.append(staff_member)
+
+class ZooKeeper:
+    def __init__(self, name):
+        self.name = name
+
+    def feed_animal(self, animal):
+        print(f"{self.name} кормит {animal.name}")
+
+class Veterinarian:
+    def __init__(self, name):
+        self.name = name
+
+    def heal_animal(self, animal):
+        print(f"{self.name} лечит {animal.name}")
+
+zoo = Zoo()
+zoo.add_animal(eagle)
+zoo.add_animal(cat)
+zoo.add_animal(dog)
+zoo.add_animal(snake)
+zoo.add_animal(turtle)
+
+keeper = ZooKeeper("Петя")
+vet = Veterinarian("Маша")
+
+zoo.add_staff(keeper)
+zoo.add_staff(vet)
+
+keeper.feed_animal(eagle)
+vet.heal_animal(snake)
+
+def animal_sound(animals):
+    for animal in animals:
+        animal.make_sound()
+animal_sound(zoo.animals)
